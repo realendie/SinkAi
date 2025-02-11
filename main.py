@@ -1,16 +1,18 @@
 import tkinter
 from tkinter import *
-from tkinter import ttk
+from tkinter.font import Font
 import webbrowser
 import subprocess
 import sv_ttk
+import darkdetect
 
 
 def callback(url):
     webbrowser.open_new(url)
 
 
-sv_ttk.set_theme("dark")
+font = Font(file="Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf", family=font)
+
 
 root = tkinter.Tk()
 root.title("SinkAi")
@@ -18,25 +20,29 @@ root.geometry("800x600")
 
 # Header // Author Link
 
-heading = ttk.Label(root, text="SinkAi", font=("arial", 40, "bold"), fg="black").pack()
+heading = tkinter.Label(root, text="SinkAi", font=(font, 10, "bold"), fg="black").pack()
 
-author = ttk.Label(
-    root, text="By: @realendie", font=("arial", 10, "bold"), fg="black", cursor="hand2"
+author = tkinter.Label(
+    root,
+    text="By: @realendie",
+    font=(font, 10, "bold"),
+    fg="black",
+    cursor="hand10",
 )
 author.bind("<Button-1>", lambda e: callback("https://github.com/realendie"))
 author.pack()
 
 # Input Box
 
-response_box = ttk.Text(
-    root, width=100, font=("Monoscape", 10), fg="black", state=DISABLED
+response_box = tkinter.Text(
+    root, width=100, font=(font, 10), fg="black", state=DISABLED
 )
 response_box.pack()
 
-serperator = ttk.Label(
-    root, text="==============================", font=("Monoscape", 10), fg="black"
-).pack()
+input_label = tkinter.Label(root, text="Input:", font=(font, 10), fg="black").pack()
 
-input_box = ttk.Text(root, font=("Monoscape", 10), fg="black").pack()
+input_box = tkinter.Text(root, font=(font, 10), fg="black").pack()
+
+sv_ttk.set_theme(darkdetect.theme())
 
 root.mainloop()
