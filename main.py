@@ -9,11 +9,13 @@ import darkdetect
 
 def callback(url):
     webbrowser.open_new(url)
-def set_text():
-    response = "Hello this is sample text!"
-    response_box.config(state=NORMAL)
-    response_box.insert(END, response)
-    response_box.config(state=DISABLED)
+
+class ResponseBox():
+    def set_text():
+        response = "Hello this is sample text!"
+        response_box.config(state=NORMAL)
+        response_box.insert(END, response)
+        response_box.config(state=DISABLED)
 
 
 TESsT = "Test"
@@ -47,7 +49,7 @@ input_label = tkinter.Label(root, text="Input:", font=('Segoe UI', 10, "bold"), 
 
 input_box = tkinter.Entry(root, font=('Segoe UI', 10), fg="black", width='100').pack()
 
-submit_button = tkinter.Button(root, text="Submit", font=('Segoe UI Semibold', 10), fg="black", command=set_text)
+submit_button = tkinter.Button(root, text="Submit", font=('Segoe UI Semibold', 10), fg="black", command=(ResponseBox.set_text))
 submit_button.pack()
 
 sv_ttk.set_theme(darkdetect.theme())
